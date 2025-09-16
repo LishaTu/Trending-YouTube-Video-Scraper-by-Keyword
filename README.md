@@ -56,6 +56,7 @@ The default settings for the scraper are as follows:
 These settings can be modified directly in the Python scripts as needed.
 
 
+
 ### Running the Python Files
 
 To run the Python scripts, follow these steps:
@@ -85,10 +86,13 @@ python search_handler.py
 # Tie everything together
 python main.py --keywords space science
 ```
+<b>
 
 ### Output Formats
 
 The output file can be stored in various formats, including CSV, JSON, and Excel. The output file will be named based on the timestamp of its creation.
+
+<b>
 
 ### Custom Parameters
 
@@ -111,4 +115,46 @@ Supported Date Formats are:
 Standard: YYYY-MM-DD or YYYY-MM-DD HH:MM:SS
 
 Relative: today, yesterday, week_ago, month_ago, year_ago
+
+<b>
+
+### Example Queries
+
+Here are some example queries you can use to personalize your search:
+
+```bash
+# Search for space and science videos
+python main.py --keywords space science
+
+# Search with custom parameters
+python main.py --keywords astronomy physics --max-results 200 --min-views 50000
+
+# Get trending Science & Technology videos
+python main.py --trending --max-results 50
+
+# Save output in multiple formats
+python main.py --keywords "black hole" --output-format csv json excel
+
+# Use a different API key file
+python main.py --api-key-file /path/to/your/api_key.txt --keywords robotics
+
+# Videos from the last 7 days
+python main.py --keywords "space exploration" --last-days 7
+
+# Videos published after a specific date
+python main.py --keywords "mars rover" --published-after 2024-01-01
+
+# Videos published before a specific date
+python main.py --keywords "astronomy" --published-before 2024-12-31
+
+# Videos within a date range
+python main.py --keywords "science news" --date-range 2024-06-01 2024-12-31
+
+# Using relative dates
+python main.py --keywords "physics" --published-after week_ago
+
+# Combine with other filters
+python main.py --keywords "quantum computing" --last-days 30 --min-views 50000
+
+```
 
