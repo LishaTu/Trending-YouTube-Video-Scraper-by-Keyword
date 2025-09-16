@@ -55,6 +55,7 @@ The default settings for the scraper are as follows:
 
 These settings can be modified directly in the Python scripts as needed.
 
+
 ### Running the Python Files
 
 To run the Python scripts, follow these steps:
@@ -85,11 +86,11 @@ python search_handler.py
 python main.py --keywords space science
 ```
 
-## Output Formats
+### Output Formats
 
 The output file can be stored in various formats, including CSV, JSON, and Excel. The output file will be named based on the timestamp of its creation.
 
-## Custom Parameters
+### Custom Parameters
 
 You can customize your search using the following parameters:
 
