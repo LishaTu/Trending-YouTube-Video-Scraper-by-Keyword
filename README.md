@@ -21,6 +21,8 @@ To use the YouTube Data API, follow these steps to create your API key:
    - Generate credentials and create an **API key**.
    - Save this key in a text file named `api_key.txt`.
 
+Google Cloud offers a free quota of 10,000 queries per day for the API, with one query returning a maximum of 50 results. The `maxResults` parameter per query (default is `5`) is set to `50`. Please keep an eye on your quota usage; you can view the usage in the `Enabled APIs & Services` section of the Google Cloud Console.
+
 ---
 
 ## Key Steps in the Scraping Process
@@ -86,21 +88,27 @@ python search_handler.py
 # Tie everything together
 python main.py --keywords space science
 ```
-<b>
+
 
 ### Output Formats
 
 The output file can be stored in various formats, including CSV, JSON, and Excel. The output file will be named based on the timestamp of its creation.
 
-<b>
+
 
 ### Custom Parameters
 
 You can customize your search using the following parameters:
 
-`keywords`: Keywords to search, separated by | (OR) and - (NOT).
+'api-key-file': Path to API key file (default: api_key.txt)
 
-`max_total_results`: Maximum total results to fetch.
+'keywords': Keywords to search, separated by | (OR) and - (NOT).
+
+'max-total-results': Maximum number of results to fetch (default: 100).
+
+'min-views': Minimum view count filter (default: 10000)
+
+'order': Sort order for search results (default: viewCount)
 
 `published_after`: RFC 3339 formatted date-time (e.g., '2024-01-01T00:00:00Z').
 
@@ -108,7 +116,11 @@ You can customize your search using the following parameters:
 
 `last-days`: Get videos from the last N days.
 
-`date-range`: Specify a date range with start and end dates.
+`date-range`: Specify a date range with start and end dates (two dates in YYYY-MM-DD format).
+
+'output-format': Output format(s) (default: csv)
+
+---
 
 Supported Date Formats are:
 
@@ -116,7 +128,7 @@ Standard: YYYY-MM-DD or YYYY-MM-DD HH:MM:SS
 
 Relative: today, yesterday, week_ago, month_ago, year_ago
 
-<b>
+
 
 ### Example Queries
 
@@ -126,11 +138,11 @@ Here are some example queries you can use to personalize your search:
 # Search for space and science videos
 python main.py --keywords space science
 
-# Search with custom parameters
-python main.py --keywords astronomy physics --max-results 200 --min-views 50000
+# Search with custom parameters, setting the threshold of minimul 50,000 views and output 200 records
+python main.py --keywords astronomy physics --max-total-results 200 --min-views 50000
 
-# Get trending Science & Technology videos
-python main.py --trending --max-results 50
+# Get top 50 trending Science & Technology videos 
+python main.py --trending --max-total-results 50
 
 # Save output in multiple formats
 python main.py --keywords "black hole" --output-format csv json excel
@@ -157,4 +169,37 @@ python main.py --keywords "physics" --published-after week_ago
 python main.py --keywords "quantum computing" --last-days 30 --min-views 50000
 
 ```
+### Output
 
+**One record in a sample `csv` output**:
+
+| video_id      | title                  | channel       | published_at          | view_count | like_count | comment_count | duration  | tags      | thumbnail_url                                            | description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | url                                          |
+|---------------|------------------------|---------------|-----------------------|------------|------------|----------------|-----------|-----------|---------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------|
+| BYVZh5kqaFg   | Egg Drop From Space     | Mark Rober    | 2022-11-25T14:59:03Z | 137775274  | 2024435    | 40550          | PT26M57S  | No tags   | https://i.ytimg.com/vi/BYVZh5kqaFg/hqdefault.jpg    | Next year we’re doing this on Mars. Ask for the CrunchLabs Build Box for Christmas ... | https://www.youtube.com/watch?v=BYVZh5kqaFg |
+
+
+**One record in a sample `json` output***:
+
+ "timestamp": "2025-09-19T14:37:17.052520",
+  "video_count": 286,
+  "videos": [
+    {
+      "video_id": "BYVZh5kqaFg",
+      "title": "Egg Drop From Space",
+      "channel": "Mark Rober",
+      "channel_id": "UCY1kMZp36IQSyNx_9h4mpCg",
+      "published_at": "2022-11-25T14:59:03Z",
+      "description": "Next year we’re doing this on Mars ...",
+      "description_short": "Next year we’re doing this on Mars ... ",
+      "view_count": 137775274,
+      "like_count": 2024435,
+      "comment_count": 40550,
+      "duration": "PT26M57S",
+      "tags": "No tags",
+      "tags_list": [],
+      "url": "https://www.youtube.com/watch?v=BYVZh5kqaFg",
+      "thumbnail": {
+        "url": "https://i.ytimg.com/vi/BYVZh5kqaFg/hqdefault.jpg",
+        "width": 480,
+        "height": 360
+      }
