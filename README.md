@@ -120,9 +120,8 @@ You can customize your search using the following parameters:
 
 'output-format': Output format(s) (default: csv)
 
----
 
-Supported Date Formats are:
+**Supported Date Formats are**:
 
 Standard: YYYY-MM-DD or YYYY-MM-DD HH:MM:SS
 
@@ -169,6 +168,7 @@ python main.py --keywords "physics" --published-after week_ago
 python main.py --keywords "quantum computing" --last-days 30 --min-views 50000
 
 ```
+
 ### Output
 
 **One record in a sample `csv` output**:
