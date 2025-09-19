@@ -100,15 +100,15 @@ The output file can be stored in various formats, including CSV, JSON, and Excel
 
 You can customize your search using the following parameters:
 
-'api-key-file': Path to API key file (default: api_key.txt)
+`api-key-file`: Path to API key file (default: api_key.txt)
 
-'keywords': Keywords to search, separated by | (OR) and - (NOT).
+`keywords`: Keywords to search, separated by | (OR) and - (NOT).
 
-'max-total-results': Maximum number of results to fetch (default: 100).
+`max-total-results`: Maximum number of results to fetch (default: 100).
 
-'min-views': Minimum view count filter (default: 10000)
+`min-views`: Minimum view count filter (default: 10000)
 
-'order': Sort order for search results (default: viewCount)
+`order`: Sort order for search results (default: viewCount)
 
 `published_after`: RFC 3339 formatted date-time (e.g., '2024-01-01T00:00:00Z').
 
@@ -118,7 +118,7 @@ You can customize your search using the following parameters:
 
 `date-range`: Specify a date range with start and end dates (two dates in YYYY-MM-DD format).
 
-'output-format': Output format(s) (default: csv)
+`output-format`: Output format(s) (default: csv)
 
 
 **Supported Date Formats are**:
