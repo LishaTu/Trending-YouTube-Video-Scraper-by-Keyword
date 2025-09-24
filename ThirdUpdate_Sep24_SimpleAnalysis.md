@@ -12,6 +12,8 @@ It records the info of the most viewed videos with both "space" AND "science" in
 
 ## Channels with Multiple Appearances
 
+Some channels appear several times in the top viewed list, meaning that the most viewed contents may be created by some specific channels, or large channels with more subscriptions are more likely to attract audiences:
+
 | Rank | Channel | Number of Videos |
 |------|---------|-----------------|
 | 1 | Cosmoknowledge | 17 |
