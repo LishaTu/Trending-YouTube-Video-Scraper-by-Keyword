@@ -4,8 +4,29 @@ This project is a customizable scraper for trending YouTube videos based on spec
 
 This project is inspired by [Trending-YouTube-Scraper_Science](https://github.com/LishaTu/Trending-YouTube-Scraper_Science) by mitchelljy. For detailed explanations on using the API and its parameters, refer to the [YouTube Data API documentation](https://developers.google.com/youtube/v3/docs). Additionally, you can find numerous YouTube tutorials that guide you through obtaining and utilizing the API for data scraping.
 
+## About the Keyword Search Method
+
 The keywords are joined as string and defined as the value of the parameter `q` in the [Search list of YouTube](https://developers.google.com/youtube/v3/docs/search/list) to search for the target videos.
 
+It’s worth noting that YouTube’s exact, behind-the-scenes ranking and query parsing are proprietary and evolve over time. Here is a practical, evidence-based summary of how the search query parameter may commonly behave and which video fields it tends to influence.
+
+The query parameter you pass to YouTube search (often via a URL like https://www.youtube.com/results?search_query=...) is the user-visible search term. On the client side, YouTube runs a search over its indexed video data, then ranks results using a complex ranking algorithm (not publicly documented in full).
+
+**What fields are searched**
+
+- **Video title**: Titles are a primary factor. Many search ranking signals are derived from the title text.
+
+- **Video description**: Descriptions are indexed and used. Keywords and content found in descriptions can influence relevance.
+
+- **Tags/Keywords**: YouTube often uses video tags (if provided by the uploader) as part of indexing signals. Tags can help associate a video with related queries.
+
+- **Captions/auto-generated transcripts**: If transcripts or captions exist (manually uploaded or auto-generated), their content can be indexed and influence search relevance.
+
+- **Video metadata**: Channel name and description and video category and other metadata fields (e.g., publish date, duration, number of views, engagement signals)
+
+- **Engagement signals**: While not strictly text fields, metrics like watch time, CTR (click-through rate from the search results), likes/dislikes, comments, and retention can affect ranking but are not direct matches for q terms.
+
+- **Other signals**: Thumbnails, localization data (language/region), and user personalization/history can influence which results appear higher for a given user.
 
 ---
 
