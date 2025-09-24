@@ -67,6 +67,7 @@ Google Cloud offers a free quota of 10,000 queries per day for the API, with one
 
 # Key Steps in the Scraping Process
 
+```
 youtube_scraper/
 ├── config_handler.py                                 # Handles API key and configuration
 ├── youtube_client.py                                 # YouTube API client wrapper
@@ -76,7 +77,7 @@ youtube_scraper/
 ├── main.py/main_title_only.py                        # Main script with CLI interface
 ├── requirements.txt                                  # Project dependencies
 └── api_key.txt                                       # Your API key file (not included in repo)
-
+```
 
 The scraping process consists of the following key steps, each represented by a corresponding Python file for easy maintenance and troubleshooting:
 
@@ -173,9 +174,12 @@ You can customize your search using the following parameters:
 `output-format`: Output format(s) (default: csv), can be set as `csv`, `excel`, and `json`.
 
 `title-search-mode`: this parameter only works in the title search model. Three title search modes available:
-    - **`all`** (default): ALL keywords must be in the title
-    - **`any`**: ANY of the keywords can be in the title, setting by `--title-search-model any`
-    - **`general`**: Original behavior (searches all fields) like the general search model, setting by `--title-search-model general`
+    
+- **`all`** (default): ALL keywords must be in the title
+    
+- **`any`**: ANY of the keywords can be in the title, setting by `--title-search-model any`
+    
+- **`general`**: Original behavior (searches all fields) like the general search model, setting by `--title-search-model general`
 
 
 **Supported Date Formats are**:
