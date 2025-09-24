@@ -4,7 +4,6 @@ This project is a customizable scraper for trending YouTube videos based on spec
 
 This project is inspired by [Trending-YouTube-Scraper_Science](https://github.com/LishaTu/Trending-YouTube-Scraper_Science) by mitchelljy. For detailed explanations on using the API and its parameters, refer to the [YouTube Data API documentation](https://developers.google.com/youtube/v3/docs). Additionally, you can find numerous YouTube tutorials that guide you through obtaining and utilizing the API for data scraping.
 
----
 
 ## About the Keyword Search Method
 
@@ -30,7 +29,6 @@ The query parameter you pass to YouTube search (often via a URL like https://www
 
 - **Other signals**: Thumbnails, localization data (language/region), and user personalization/history can influence which results appear higher for a given user.
 
----
 
 ## Different Searching Methods
 
@@ -149,7 +147,6 @@ python main.py --keywords space science
 # python main_title_only.py --keywords space science
 ```
 
----
 
 ## Custom Parameters
 
@@ -187,7 +184,7 @@ Standard: YYYY-MM-DD or YYYY-MM-DD HH:MM:SS
 
 Relative: today, yesterday, week_ago, month_ago, year_ago
 
----
+
 
 ## Example Queries
 
@@ -234,7 +231,7 @@ python main.py --keywords space science --title-search-mode any --max-total-resu
 python main.py --keywords space science --title-search-mode general --max-total-results 100
 
 ```
----
+
 
 ## Example Output
 
