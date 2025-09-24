@@ -4,6 +4,8 @@ This project is a customizable scraper for trending YouTube videos based on spec
 
 This project is inspired by [Trending-YouTube-Scraper_Science](https://github.com/LishaTu/Trending-YouTube-Scraper_Science) by mitchelljy. For detailed explanations on using the API and its parameters, refer to the [YouTube Data API documentation](https://developers.google.com/youtube/v3/docs). Additionally, you can find numerous YouTube tutorials that guide you through obtaining and utilizing the API for data scraping.
 
+---
+
 ## About the Keyword Search Method
 
 The keywords are joined as string and defined as the value of the parameter `q` in the [Search list of YouTube](https://developers.google.com/youtube/v3/docs/search/list) to search for the target videos.
@@ -30,7 +32,23 @@ The query parameter you pass to YouTube search (often via a URL like https://www
 
 ---
 
-## Prerequisites: YouTube Data API
+## Different Searching Methods
+
+There are two searching methods:
+
+- One searches across multiple fields of video (title, description, tags, video metadata, etc.), which is the standard `p` method as described above. The scripts for running this method are in the folder 'general-search' in this repository.
+
+- The other searches kewords exclusively in video titles. In this method, keywords are matched only with title, and the corresponding videos are returned. The scripts for these mtehod are in the folder 'title-search'.
+
+Most scripts for the two different methods are the same but:
+
+- the `search_handler.py` in the folder 'general-search' and the `search_handler_title_only.py` in the folder 'title-search';
+
+- the `main.py` in the folder 'general-search' and the `main_title_only.py` in the folder 'title-search'.
+
+---
+
+# Prerequisites: YouTube Data API
 
 To use the YouTube Data API, follow these steps to create your API key:
 
@@ -49,7 +67,18 @@ Google Cloud offers a free quota of 10,000 queries per day for the API, with one
 
 ---
 
-## Key Steps in the Scraping Process
+# Key Steps in the Scraping Process
+
+youtube_scraper/
+├── config_handler.py                                 # Handles API key and configuration
+├── youtube_client.py                                 # YouTube API client wrapper
+├── search_handler.py/search_handler_title_only.py    # Search and data retrieval functions
+├── data_processor.py                                 # Data processing and filtering
+├── storage_handler.py                                # Data storage (CSV, JSON)
+├── main.py/main_title_only.py                        # Main script with CLI interface
+├── requirements.txt                                  # Project dependencies
+└── api_key.txt                                       # Your API key file (not included in repo)
+
 
 The scraping process consists of the following key steps, each represented by a corresponding Python file for easy maintenance and troubleshooting:
 
@@ -61,15 +90,15 @@ The scraping process consists of the following key steps, each represented by a 
 
 4. **Data Storage Functionality**: `storage_handler.py`
 
-5. **Search Logic and Query Management**: `search_handler.py`
+5. **Search Logic and Query Management**: `search_handler.py` or `search_handler_title_only.py`
 
-6. **Integrate All Components**: `main.py`
+6. **Integrate All Components**: `main.py` or `main_title_only.py`
 
 For each step, there is a corresponding python file for easy maintenance and trouble shooting. 
 
 ---
 
-## Settings and Implementation
+# Settings and Implementation
 
 The default settings for the scraper are as follows:
 
@@ -85,7 +114,7 @@ These settings can be modified directly in the Python scripts as needed.
 
 
 
-### Running the Python Files
+## Running the Python Files
 
 To run the Python scripts, follow these steps:
 
@@ -94,6 +123,7 @@ To run the Python scripts, follow these steps:
 echo "YOUR_YOUTUBE_API_KEY" > api_key.txt
 
 # Install required dependencies
+# the requirement.txt file is in the main page not in the two folders
 pip install -r requirements.txt
 
 # Start with API key management
@@ -110,19 +140,18 @@ python storage_handler.py
 
 # Implement search logic
 python search_handler.py
+# or
+# python search_handler_title_only.py
 
 # Tie everything together
 python main.py --keywords space science
+# or
+# python main_title_only.py --keywords space science
 ```
 
+---
 
-### Output Formats
-
-The output file can be stored in various formats, including CSV, JSON, and Excel. The output file will be named based on the timestamp of its creation.
-
-
-
-### Custom Parameters
+## Custom Parameters
 
 You can customize your search using the following parameters:
 
@@ -144,7 +173,12 @@ You can customize your search using the following parameters:
 
 `date-range`: Specify a date range with start and end dates (two dates in YYYY-MM-DD format).
 
-`output-format`: Output format(s) (default: csv)
+`output-format`: Output format(s) (default: csv), can be set as `csv`, `excel`, and `json`.
+
+`title-search-mode`: this parameter only works in the title search model. Three title search modes available:
+    - **`all`** (default): ALL keywords must be in the title
+    - **`any`**: ANY of the keywords can be in the title, setting by `--title-search-model any`
+    - **`general`**: Original behavior (searches all fields) like the general search model, setting by `--title-search-model general`
 
 
 **Supported Date Formats are**:
@@ -153,9 +187,9 @@ Standard: YYYY-MM-DD or YYYY-MM-DD HH:MM:SS
 
 Relative: today, yesterday, week_ago, month_ago, year_ago
 
+---
 
-
-### Example Queries
+## Example Queries
 
 Here are some example queries you can use to personalize your search:
 
@@ -193,9 +227,16 @@ python main.py --keywords "physics" --published-after week_ago
 # Combine with other filters
 python main.py --keywords "quantum computing" --last-days 30 --min-views 50000
 
-```
+# Find videos with either "space" OR "science" in the title
+python main.py --keywords space science --title-search-mode any --max-total-results 100
 
-### Output
+# Search across all fields (title, description, tags, etc.)
+python main.py --keywords space science --title-search-mode general --max-total-results 100
+
+```
+---
+
+## Example Output
 
 **One record in a sample `csv` output**:
 
