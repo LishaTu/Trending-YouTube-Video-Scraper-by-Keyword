@@ -77,7 +77,7 @@ The default settings for the scraper are as follows:
 
 - **region_code**: 'US' (default region)
 
-- **category_id**: setting the value for the `videoCategoryId` parameter of YouTube video paramater, 28 in default (28 = Science & Technology)
+- **category_id**: setting the value for the `videoCategoryId` parameter of YouTube video, 28 in default (28 = Science & Technology)
 
 - **Output Order**: Results are ordered by view count in descending order.
 
