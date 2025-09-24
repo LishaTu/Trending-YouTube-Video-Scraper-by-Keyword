@@ -40,6 +40,9 @@ Some channels appear several times in the top viewed list, meaning that the most
 ## Most Common Tags
 
 ### Top 15 Tags:
+
+These most appearing tags may indicate the popular topics of the space and science videos.
+
 1. **space** - 27 occurrences
 2. **science** - 25 occurrences
 3. **universe** - 19 occurrences
@@ -96,7 +99,7 @@ This suggests most content is published during evening hours (19:00-23:00 UTC), 
 
 1. **Content Format**: Nearly 25% of videos are optimized for YouTube Shorts, indicating a trend toward short-form educational content.
 
-2. **Educational Focus**: The heavy presence of "science," "facts," and "education" in titles suggests most content is educational rather than entertainment-focused.
+2. **Educational Focus**: The heavy presence of "science," "facts," and "education" in titles suggests most content is educational rather than entertainment-focused (As we search topics such as "science" and "space," it may be more persuasive to say that people want to know facts and learn about space topics.). 
 
 3. **Popular Topics**: Universe/cosmos content and science facts dominate, with NASA-related content being particularly popular.
 
