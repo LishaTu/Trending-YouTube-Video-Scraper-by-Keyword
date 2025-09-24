@@ -4,6 +4,9 @@ This project is a customizable scraper for trending YouTube videos based on spec
 
 This project is inspired by [Trending-YouTube-Scraper_Science](https://github.com/LishaTu/Trending-YouTube-Scraper_Science) by mitchelljy. For detailed explanations on using the API and its parameters, refer to the [YouTube Data API documentation](https://developers.google.com/youtube/v3/docs). Additionally, you can find numerous YouTube tutorials that guide you through obtaining and utilizing the API for data scraping.
 
+The keywords are joined as string and defined as the value of the parameter `q` in the [Search list of YouTube](https://developers.google.com/youtube/v3/docs/search/list) to search for the target videos.
+
+
 ---
 
 ## Prerequisites: YouTube Data API
@@ -52,6 +55,8 @@ The default settings for the scraper are as follows:
 - **maxResults**: 50 (maximum number of results per query)
 
 - **region_code**: 'US' (default region)
+
+- **category_id**: setting the value for the `videoCategoryId` parameter of YouTube video paramater, 28 in default (28 = Science & Technology)
 
 - **Output Order**: Results are ordered by view count in descending order.
 
