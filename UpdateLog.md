@@ -8,7 +8,7 @@ First, we have discussed to filter videos by categoryId to improve the accuracy 
 
 I want to explore whether videos can be filtered by the keywords in their title. However, I cannot find a parameter to restrict the search in title. 
 
-The good news is that I've found an undocumented way to specifically look for title - using the `intitle` search operator which is not recorded in YouTube API documents but found in some online forums. Besides, this method using `intitle` is not official supported, it may stop working without notice or have some potential issues.
+The good news is that I've found an unofficially published way to specifically look for title - using the `intitle` search operator which is not recorded in YouTube API documents but found in some online forums. Besides, this method using `intitle` is not official supported, it may stop working without notice or have some potential issues.
 
 **Note**: 
 The currently used keyword searching method uses the `q` parameter ([YouTube Data API | Search: list](https://developers.google.com/youtube/v3/docs/search/list?hl=en)) to match the keywords across multiple fields of video (title, description, tags, video metadata, etc.) to fetch the required videos. However, the searching process is driven by a complex ranking algorithm that is not publicly documented yet. That means, we cannot select where the `q` will look into, e.g. title, tag, description. 
