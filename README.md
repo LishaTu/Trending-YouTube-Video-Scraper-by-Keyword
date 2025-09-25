@@ -36,7 +36,7 @@ There are two searching methods:
 
 - One searches across multiple fields of video (title, description, tags, video metadata, etc.), which is the standard `p` method as described above. The scripts for running this method are in the folder 'general-search' in this repository.
 
-- The other searches kewords exclusively in video titles. In this method, keywords are matched only with title, and the corresponding videos are returned. The scripts for these mtehod are in the folder 'title-search'.
+- The other searches kewords exclusively in video titles. In this method, keywords are matched only with title, and the corresponding videos are returned. The scripts for these method are in the folder 'title-search'.
 
 Most scripts for the two different methods are the same but:
 
