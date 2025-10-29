@@ -29,3 +29,40 @@ Some simple analysis:
 - Searching keywords in topic has results that are more closely aligned with those keywords.
 - Channels with a high number of subscriptions tend to have more views on their videos. These channels may appear multiple times in the table with high view counts. They consistently update their content and present real science stories about the universe in an engaging and captivating manner.
 
+### Forth Update: 18, Oct.
+Add the time duration columns in the output file, the video `duration`, `duration-seconds`, `is_short`, and `video_type` are added. 
+A duration filter is also added. Videos can be filtered by their duration type using `video-type-filter`:
+
+- **`video_type`**: Categories based on duration:
+    - Short (≤60s)
+    - Short Video (1-4 min)
+    - Medium Video (4-10 min)
+    - Long Video (10-20 min)
+    - Very Long Video (>20 min)
+
+A sample query: 'python main.py --keywords "science experiments" --video-type-filter shorts-only' to filter the short videos (≤60s), or 'python main.py --keywords "lecture" --video-type-filter custom --custom-types "Long Video" "Very Long Video"' to filter long and very long videos 
+
+Here are the definition of the `video-type-filter` paramter, and the `custom-types` parameter:
+
+- **`video-type-filter`**: 'all', 'shorts-only', 'no-shorts', 'custom'
+
+- **`custom-types`**: 'Short', 'Short Video', 'Medium Video', 'Long Video', 'Very Long Video'
+
+```python
+ # Add video type filtering arguments
+    parser.add_argument(
+        '--video-type-filter',
+        type=str,
+        choices=['all', 'shorts-only', 'no-shorts', 'custom'],
+        default='all',
+        help='Filter videos by type: all, shorts-only, no-shorts, or custom (default: all)'
+    )
+    
+    parser.add_argument(
+        '--custom-types',
+        type=str,
+        nargs='+',
+        choices=['Short', 'Short Video', 'Medium Video', 'Long Video', 'Very Long Video'],
+        help='When using --video-type-filter custom, specify which types to include'
+    )
+```
