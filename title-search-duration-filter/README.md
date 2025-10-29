@@ -22,6 +22,33 @@ This folder includes files for running a title search model (searching keywords 
 
 ## Sample Use Cases
 
+The `video-type-filter` paramter and the `custom-types` parameter can be customized:
+
+- **`video-type-filter`**: 'all', 'shorts-only', 'no-shorts', 'custom'
+
+- **`custom-types`**: 'Short', 'Short Video', 'Medium Video', 'Long Video', 'Very Long Video'
+
+Here are the definition of the two parameters:
+```python
+ # Add video type filtering arguments
+    parser.add_argument(
+        '--video-type-filter',
+        type=str,
+        choices=['all', 'shorts-only', 'no-shorts', 'custom'],
+        default='all',
+        help='Filter videos by type: all, shorts-only, no-shorts, or custom (default: all)'
+    )
+    
+    parser.add_argument(
+        '--custom-types',
+        type=str,
+        nargs='+',
+        choices=['Short', 'Short Video', 'Medium Video', 'Long Video', 'Very Long Video'],
+        help='When using --video-type-filter custom, specify which types to include'
+    )
+```
+
+Here are some sample queries:
 ```python
 # Analyze only viral Shorts
 python main.py --keywords "viral" --video-type-filter shorts-only --min-views 1000000
