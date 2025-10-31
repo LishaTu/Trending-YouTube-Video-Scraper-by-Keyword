@@ -125,24 +125,7 @@ echo "YOUR_YOUTUBE_API_KEY" > api_key.txt
 # the requirement.txt file is in the main page not in the two folders
 pip install -r requirements.txt
 
-# Start with API key management
-python config_handler.py  
-
-# Add YouTube API wrapper
-python youtube_client.py
-
-# Create data processing utilities
-python data_processor.py
-
-# Add storage functionality
-python storage_handler.py
-
-# Implement search logic
-python search_handler.py
-# or
-# python search_handler_title_only.py
-
-# Tie everything together
+# Run the query 
 python main.py --keywords space science
 # or
 # python main_title_only.py --keywords space science
